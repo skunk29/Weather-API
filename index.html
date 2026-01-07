@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>WEATHER API</title>
+</head>
+<body>
+
+  <h2>Weather App</h2>
+  <button onclick="getWeather()">Get Weather</button>
+  <p id="result"></p>
+
+  <script>
+    function getWeather() {
+      const apiKey = "872b0afdc4c4b5eb6d0c14eb33026028";
+      const city = "california";
+      const url =
+        "https://api.openweathermap.org/data/2.5/weather?q=" +
+        city +
+        "&units=metric&appid=" +
+        apiKey;
+
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          const temp = data.main.temp;
+          document.getElementById("result").textContent =
+            "Temperature in " + city + ": " + temp + "°C";
+        });
+    }
+  </script>
+
+</body>
+</html>
